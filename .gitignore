@@ -1,0 +1,6 @@
+*.npy
+*.pyc
+.idea
+venv
+__pycache__
+data/problem-49-7776-pre.txt
