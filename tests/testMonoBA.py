@@ -1,3 +1,8 @@
+import sys
+sys.path.append('.')
+sys.path.append('..')
+
+
 from utils import numeric, ProblemLoader
 from backend import Graph
 from backend import Problem
@@ -7,6 +12,7 @@ import scipy.linalg as scp
 import random
 import math
 import time
+import os
 
 
 def vec3_to_quat(vec3:np.ndarray)->pyquaternion.Quaternion:
@@ -216,8 +222,10 @@ def formAndSolveProblem(ifPointDense, nPoints, nCameras):
         print("point", ii, "gt", frames[ii][1].transpose(), 'init', vertexFrames[ii].initState[0:3].transpose(), 'opt', vertexFrames[ii].state[0:3].transpose())
     import matplotlib.pyplot as plt
     plt.imshow(problem.getHessionDense())
+    plt.title('hession matrix')
     plt.figure()
     plt.imshow(problem.getHessionDense() > 0.01)
+    plt.title('hession value greater than 0.01')
     plt.show()
     normdelta = np.abs(problem.getHessionDense() - problem.getHessionDense().transpose())
     print(np.sum(normdelta), normdelta.max(), normdelta.min(), normdelta.mean())

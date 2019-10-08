@@ -135,5 +135,5 @@ def test_func():
         observation = loader.observations[ii][2]
         edge: BAEdge = BAEdge(problem.getVertex(camIdx), problem.getVertex(ptIdx), observation)
         problem.addEdge(edge)
-    problem.__solveAllDense(100)
+    problem.Solve(100)
     pass
